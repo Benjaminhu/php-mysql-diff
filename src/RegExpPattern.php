@@ -125,8 +125,9 @@ class RegExpPattern
         $pattern .= '(?<fullText>FULLTEXT)?\s*';
         $pattern .= 'KEY\s+`(?<name>\S+?)`\s+';
         $pattern .= '\((?<columns>(?:`[^`]+`(?:\(\d+\))?,?)+)\)\s*';
-        $pattern .= '(?<options>[^,]+?)?\s*';
-        $pattern .= '(?:,|$)/';
+        $pattern .= '(?<options>[^(\)|,)]+?)?\s*';
+        //$pattern .= '(?:,|$)/';
+        $pattern .= '/';
         $pattern .= 'i'; // modifier
 
         return $pattern;
