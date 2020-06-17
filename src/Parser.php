@@ -23,6 +23,10 @@ class Parser
     {
         $database = new Database();
 
+        // skshin for remove PARTITION
+        $sqlScript = preg_replace('/[\(]*PARTITION.*/', ';', $sqlScript);
+        //$sqlScript = preg_replace('/(\s|\()*PARTITION.*ENGINE = .*$/', '', $sqlScript);
+
         $tables = $this->parseTables($this->convertStringsToBase64($sqlScript));
 
         foreach ($tables as $table) {
