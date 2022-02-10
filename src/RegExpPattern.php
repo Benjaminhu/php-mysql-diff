@@ -43,6 +43,8 @@ class RegExpPattern
         $pattern .= '|';
         $pattern .= '(?:DEFAULT CHARSET\s*=\s*(?<defaultCharset>[^;\s]+))?\s*';
         $pattern .= '|';
+        $pattern .= '(?:\s+STATS_SAMPLE_PAGES\s*=\s*(?<statsSamplePages>[^;\s]+))?\s*';
+        $pattern .= '|';
         $pattern .= '(?:\s+ROW_FORMAT\s*=\s*(?<rowFormat>[^;\s]+))?\s*';
         $pattern .= '|';
         $pattern .= '(?:\s+KEY_BLOCK_SIZE\s*=\s*(?<keyBlockSize>[^;\s]+))?\s*';

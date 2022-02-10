@@ -54,6 +54,7 @@ class Parser
             $autoIncrement = $matches['autoIncrement'][$i];
             $defaultCharset = $matches['defaultCharset'][$i];
             $comment = base64_decode($matches['comment'][$i]);
+            $statsSamplePages = $matches['statsSamplePages'][$i];
             $rowFormat = $matches['rowFormat'][$i];
             $keyBlockSize = $matches['keyBlockSize'][$i];
 
@@ -79,6 +80,10 @@ class Parser
 
             if ($comment) {
                 $table->setComment(str_replace('\'\'', '\'', $comment));
+            }
+
+            if ($statsSamplePages) {
+                $table->setStatsSamplePages($statsSamplePages);
             }
 
             if ($rowFormat) {

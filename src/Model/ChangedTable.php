@@ -379,6 +379,10 @@ class ChangedTable
             $tableChanges[] = sprintf('DEFAULT CHARSET=%s', $this->toTable->getDefaultCharset());
         }
 
+        if ($this->fromTable->getStatsSamplePages() !== $this->toTable->getStatsSamplePages()) {
+            $tableChanges[] = sprintf('ROW_FORMAT=%s', $this->toTable->getStatsSamplePages());
+        }
+
         if ($this->fromTable->getRowFormat() !== $this->toTable->getRowFormat()) {
             $tableChanges[] = sprintf('ROW_FORMAT=%s', $this->toTable->getRowFormat());
         }

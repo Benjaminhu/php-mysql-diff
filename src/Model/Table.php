@@ -53,6 +53,11 @@ class Table
     private $engine;
 
     /**
+     * @var int
+     */
+    private $statsSamplePages;
+
+    /**
      * @var string
      */
     private $rowFormat;
@@ -331,6 +336,22 @@ class Table
     /**
      * @return string
      */
+    public function getStatsSamplePages()
+    {
+        return $this->statsSamplePages;
+    }
+
+    /**
+     * @param string $rowFormat
+     */
+    public function setStatsSamplePages($statsSamplePages)
+    {
+        $this->statsSamplePages = $statsSamplePages;
+    }
+
+    /**
+     * @return string
+     */
     public function getRowFormat()
     {
         return $this->rowFormat;
@@ -487,6 +508,10 @@ class Table
 
         if ($this->defaultCharset) {
             $tableOptions[] = sprintf('DEFAULT CHARSET=%s', $this->defaultCharset);
+        }
+
+        if ($this->statsSamplePages) {
+            $tableOptions[] = sprintf('STATS_SAMPLE_PAGES=%s', $this->statsSamplePages);
         }
 
         if ($this->rowFormat) {

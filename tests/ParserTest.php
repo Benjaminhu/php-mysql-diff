@@ -378,4 +378,23 @@ class ParserTest extends AbstractTest
         $this->assertEquals('Table/Comment', $database->getTableByName('backslash')->getComment());
         $this->assertEquals('`time_zone` varchar(255) NOT NULL DEFAULT \'America/Los_Angeles\' COMMENT \'Column/Comment\'', $database->getTableByName('backslash')->getColumnByName('time_zone')->generateCreationScript());
     }
+
+    public function testIsParsingTableStatsSamplePages()
+    {
+        $creationScript = $this->getDatabaseFixture('stats_sample_pages.sql');
+
+        $parser = new Parser();
+
+        $database = $parser->parseDatabase($creationScript);
+
+        $this->assertInstanceOf(Database::class, $database);
+        $this->assertCount(1, $database->getTables());
+        $this->assertCount(1, $database->getTableByName('sample')->getColumns());
+        $this->assertCount(0, $database->getTableByName('sample')->getPrimaryKeys());
+        $this->assertCount(0, $database->getTableByName('sample')->getIndexes());
+        $this->assertEquals('utf8', $database->getTableByName('sample')->getDefaultCharset());
+        $this->assertEquals('InnoDB', $database->getTableByName('sample')->getEngine());
+        $this->assertEquals('200', $database->getTableByName('sample')->getStatsSamplePages());
+        $this->assertEquals('sample', $database->getTableByName('sample')->getComment());
+    }
 }
