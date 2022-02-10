@@ -1,32 +1,10 @@
 # PHP MySQL Diff
 MySQL Schema Diff - Comparison / Migration Script Generation
 
-[![Travis-CI](https://img.shields.io/travis/camcima/php-mysql-diff/master.svg)](https://travis-ci.org/camcima/php-mysql-diff)
+This is a fork of [camcima/php-mysql-diff](https://github.com/camcima/php-mysql-diff).
 
 ##### Why not `mysqldiff` from MySQL Utilities?
 MySQL Utilities includes a similar tool, `mysqldiff`, that is absolutely **horrible**! The purpose of this project is to provide a tool that is simple to use, reliable and fast.
-
-## Installation
-
-To install PHP MySQL Diff, install Composer and issue the following command:
-
-```
-$ ./composer.phar global require camcima/php-mysql-diff
-```
-
-Then, make sure you have ~/.composer/vendor/bin in your PATH, and you're good to go:
-
-```
-export PATH="$PATH:$HOME/.composer/vendor/bin"
-```
-
-## Update
-
-You can update PHP MySQL Diff through this command:
-
-```
-$ ./composer.phar global update camcima/php-mysql-diff
-```
 
 ## Usage
 
