@@ -23,6 +23,10 @@ class Parser
     {
         $database = new Database();
 
+        // skshin for remove PARTITION
+        $sqlScript = preg_replace('/[\(]*PARTITION.*/', ';', $sqlScript);
+        //$sqlScript = preg_replace('/(\s|\()*PARTITION.*ENGINE = .*$/', '', $sqlScript);
+
         $tables = $this->parseTables($this->convertStringsToBase64($sqlScript));
 
         foreach ($tables as $table) {
@@ -137,6 +141,7 @@ class Parser
             $nullable = $matches['nullable'][$i];
             $autoIncrement = $matches['autoIncrement'][$i];
             $defaultValue = $matches['defaultValue'][$i];
+            $virtual = $matches['virtual'][$i];
             $onUpdateValue = $matches['onUpdateValue'][$i];
             $comment = $matches['comment'][$i];
             $characterSet = $matches['characterSet'][$i];
@@ -155,6 +160,10 @@ class Parser
             $column->setPrecision($this->getColumnPrecision($decimalPrecision, $doublePrecision, $floatPrecision));
             $column->setNullable($nullable !== 'NOT NULL');
             $column->setAutoIncrement(!empty($autoIncrement));
+
+            if (!empty($virtual)) {
+                $column->setVirtual($virtual);
+            }
 
             if (!empty($defaultValue)) {
                 $column->setDefaultValue($defaultValue);

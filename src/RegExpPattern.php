@@ -27,6 +27,7 @@ class RegExpPattern
         '(?:tiny|medium|long)?blob',
         'enum\(.+\)',
         'set\(.+\)',
+        'json',
     ];
 
     /**
@@ -35,7 +36,7 @@ class RegExpPattern
     public static function tables()
     {
         $pattern = '/(?<creationScript>CREATE\s+TABLE\s+(?<ifNotExists>IF NOT EXISTS)?\s*`(?<tableName>\S+)`\s+';
-        $pattern .= '\((?<tableDefinition>[^\/]+?)\)';
+        $pattern .= '\((?<tableDefinition>.+?)\)';
         $pattern .= '(';
         $pattern .= '(?:\s+ENGINE\s*=\s*(?<engine>[^;\s]+))?\s*';
         $pattern .= '|';
@@ -73,6 +74,7 @@ class RegExpPattern
         $pattern .= '(?<nullable>NULL|NOT NULL)?\s*';
         $pattern .= '(?<autoIncrement>AUTO_INCREMENT)?\s*';
         $pattern .= '(?:DEFAULT (?<defaultValue>\S+|\'[^\']+\'))?\s*';
+        $pattern .= '(?:GENERATED ALWAYS AS \((?<virtual>.+)\) VIRTUAL)?\s*';
         $pattern .= '(?:ON UPDATE (?<onUpdateValue>\S+))?\s*';
         $pattern .= '(?:COMMENT \'(?<comment>([^\']|\'\')+)\')?\s*';
         $pattern .= '(?:,|$)/';
@@ -125,8 +127,9 @@ class RegExpPattern
         $pattern .= '(?<fullText>FULLTEXT)?\s*';
         $pattern .= 'KEY\s+`(?<name>\S+?)`\s+';
         $pattern .= '\((?<columns>(?:`[^`]+`(?:\(\d+\))?,?)+)\)\s*';
-        $pattern .= '(?<options>[^,]+?)?\s*';
-        $pattern .= '(?:,|$)/';
+        $pattern .= '(?<options>[^(\)|,)]+?)?\s*';
+        //$pattern .= '(?:,|$)/';
+        $pattern .= '/';
         $pattern .= 'i'; // modifier
 
         return $pattern;
