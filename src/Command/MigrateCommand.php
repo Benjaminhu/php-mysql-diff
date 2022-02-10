@@ -4,6 +4,7 @@ namespace Camcima\MySqlDiff\Command;
 
 use Camcima\MySqlDiff\Differ;
 use Camcima\MySqlDiff\Parser;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -126,5 +127,6 @@ class MigrateCommand extends AbstractCommand
         } else {
             $this->outputLine($migrationScript, true);
         }
+        return Command::SUCCESS;
     }
 }
