@@ -380,7 +380,7 @@ class ChangedTable
         }
 
         if ($this->fromTable->getStatsSamplePages() !== $this->toTable->getStatsSamplePages()) {
-            $tableChanges[] = sprintf('ROW_FORMAT=%s', $this->toTable->getStatsSamplePages());
+            $tableChanges[] = sprintf('STATS_SAMPLE_PAGES=%s', $this->toTable->getStatsSamplePages());
         }
 
         if ($this->fromTable->getRowFormat() !== $this->toTable->getRowFormat()) {
