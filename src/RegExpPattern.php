@@ -36,7 +36,7 @@ class RegExpPattern
     public static function tables()
     {
         $pattern = '/(?<creationScript>CREATE\s+TABLE\s+(?<ifNotExists>IF NOT EXISTS)?\s*`(?<tableName>\S+)`\s+';
-        $pattern .= '\((?<tableDefinition>[^\/]+?)\)';
+        $pattern .= '\((?<tableDefinition>.+?)\)';
         $pattern .= '(';
         $pattern .= '(?:\s+ENGINE\s*=\s*(?<engine>[^;\s]+))?\s*';
         $pattern .= '|';
