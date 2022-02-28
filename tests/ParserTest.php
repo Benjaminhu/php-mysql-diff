@@ -391,7 +391,7 @@ class ParserTest extends AbstractTest
         $this->assertCount(1, $database->getTables());
         $this->assertCount(1, $database->getTableByName('sample')->getColumns());
         $this->assertCount(0, $database->getTableByName('sample')->getPrimaryKeys());
-        $this->assertCount(0, $database->getTableByName('sample')->getIndexes());
+        $this->assertCount(1, $database->getTableByName('sample')->getIndexes());
         $this->assertEquals('utf8', $database->getTableByName('sample')->getDefaultCharset());
         $this->assertEquals('InnoDB', $database->getTableByName('sample')->getEngine());
         $this->assertEquals('200', $database->getTableByName('sample')->getStatsSamplePages());

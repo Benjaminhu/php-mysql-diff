@@ -1,3 +1,4 @@
 CREATE TABLE `sample` (
-  `field1` varchar(50) NOT NULL
+  `field1` varchar(50) NOT NULL,
+  KEY `idx1` (`field1`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 STATS_SAMPLE_PAGES=200 ROW_FORMAT=COMPRESSED COMMENT='sample';
