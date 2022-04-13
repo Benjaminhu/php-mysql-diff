@@ -1,7 +1,7 @@
 {
   "name": "benjaminhu/php-mysql-diff",
   "type": "project",
-  "homepage": "https://github.com/osapon/php-mysql-diff",
+  "homepage": "https://github.com/Benjaminhu/php-mysql-diff",
   "keywords": ["database","diff","mysql","migration","generator","script"],
   "license": "MIT",
   "authors": [
@@ -10,7 +10,7 @@
       "role": "Developer"
     },
     {
-      "name": "barmi",
+      "name": "Benjamin Ssimon",
       "role": "Developer"
     },
     {
