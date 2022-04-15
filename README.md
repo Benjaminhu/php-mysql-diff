@@ -6,6 +6,28 @@ This is a fork of [camcima/php-mysql-diff](https://github.com/camcima/php-mysql-
 ##### Why not `mysqldiff` from MySQL Utilities?
 MySQL Utilities includes a similar tool, `mysqldiff`, that is absolutely **horrible**! The purpose of this project is to provide a tool that is simple to use, reliable and fast.
 
+## Installation
+
+To install PHP MySQL Diff, install Composer and issue the following command:
+
+```
+$ ./composer.phar global require benjaminhu/php-mysql-diff
+```
+
+Then, make sure you have ~/.composer/vendor/bin in your PATH, and you're good to go:
+
+```
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+```
+
+## Update
+
+You can update PHP MySQL Diff through this command:
+
+```
+$ ./composer.phar global update benjaminhu/php-mysql-diff
+```
+
 ## Usage
 
 ### Database Creation Scripts
